@@ -1,25 +1,25 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: flask-app
+  name: k8s-flask
 spec:
   replicas: 2
   selector:
     matchLabels:
-      app: flask-app
+      app: k8s-flask
   template:
     metadata:
       labels:
-        app: flask-app
+        app: k8s-flask
     spec:
       containers:
       - name: flask-container
-        image: REPLACE_WITH_IMAGE
+        image: cremerfc/appdirect:latest
         ports:
-        - containerPort: 8000
+        - containerPort: 5000
         env:
         - name: PORT
-          value: "8000"
+          value: "5000"
         resources:
           requests:
             cpu: "100m"
@@ -27,15 +27,4 @@ spec:
           limits:
             cpu: "500m"
             memory: "256Mi"
-        readinessProbe:
-          httpGet:
-            path: /
-            port: 8000
-          initialDelaySeconds: 5
-          periodSeconds: 10
-        livenessProbe:
-          httpGet:
-            path: /
-            port: 8000
-          initialDelaySeconds: 15
-          periodSeconds: 20
+        
