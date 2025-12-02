@@ -1,17 +1,18 @@
-# Use a slim Python base image
-FROM python:3.11-slim
+FROM ubuntu:18.04
 
-WORKDIR /app
+MAINTAINER Fernando Cremer "cremerfc@gmail.com"
 
-# Install runtime deps
-COPY Requirements.txt .
-RUN pip install --no-cache-dir -r Requirements.txt
+RUN apt-get update -y && \
+    apt-get install -y python3-pip python3-dev
 
-# Copy app
-COPY . .
+COPY ./Requirements.txt /Requirements.txt
 
-EXPOSE 8000
-ENV PORT=8000
+WORKDIR /
 
-# Use gunicorn for production-like server
-CMD ["gunicorn", "-w", "4", "-b", "0.0.0.0:8000", "app:app"]
+RUN pip3 install -r Requirements.txt
+
+COPY . /
+
+ENTRYPOINT [ "python3" ]
+
+CMD [ "app/app.py" ]
