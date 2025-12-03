@@ -33,7 +33,7 @@ jobs:
           echo "POST $API_URL"
           payload='{"eventType":"GitHub Workflow","summary":"A Commit happened and workflow was triggered","serviceNames":["k8s-flask"],"clusters":["localone"],"namespaces":["appdirect"],"severity":"DEFCON-1","details": {"Sha":"O87Q"}}'
           http_status=$(curl -sS -o response.txt -w "%{http_code}" \
-            -H "Authorization: Bearer $API_TOKEN" \
+            -H "x-api-key": $API_TOKEN" \
             -H "Content-Type: application/json" \
             -d "$payload" \
             -X POST \
