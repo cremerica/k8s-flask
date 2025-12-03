@@ -27,7 +27,7 @@ jobs:
           tags: docker.io/${{ secrets.DOCKERHUB_USERNAME }}/k8s-flask:latest
       - name: Run POST JSON request
         env:
-          API_URL: https://api.komodor.com/api/v2/klaudia/knowledge-base/files
+          API_URL: https://api.komodor.com/mgmt/v1/events
           API_TOKEN: ${{ secrets.KOMO_TOKEN }}
         run: |
           echo "POST $API_URL"
