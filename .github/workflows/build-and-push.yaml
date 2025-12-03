@@ -31,7 +31,7 @@ jobs:
           API_TOKEN: ${{ secrets.KOMO_TOKEN }}
         run: |
           echo "POST $API_URL"
-          payload='{"eventType":"GitHub Workflow","summary":"A Commit happened and workflow was triggered","servicesNames":["k8s-flask"],"clusters":["localone"],"namespaces":["appdirect"],"severity":"information","details": {"Sha":"O87Q"}}'
+          payload='{"eventType":"deploy","summary":"A Commit happened and workflow was triggered","servicesNames":["k8s-flask"],"clusters":["localone"],"namespaces":["appdirect"],"severity":"information","details": {"Sha":"O87Q"}}'
           echo $payload
           http_status=$(curl -sS -o response.txt -w "%{http_code}" \
             -H "x-api-key: $API_TOKEN" \
