@@ -1,18 +1,23 @@
-FROM ubuntu:22.04
+# syntax=docker/dockerfile:1
+ARG BASE_IMAGE=python:3.11-slim
+FROM ${BASE_IMAGE}
 
-MAINTAINER Fernando Cremer "cremerfc@gmail.com"
+LABEL maintainer="Fernando Cremer <cremerfc@gmail.com>"
 
-RUN apt-get update -y && \
-    apt-get install -y python3-pip python3-dev
+WORKDIR /app
 
-COPY ./Requirements.txt /Requirements.txt
+# Copy requirements first to leverage layer caching
+COPY Requirements.txt /app/Requirements.txt
 
-WORKDIR /
+# Upgrade pip and install Python dependencies without cache
+RUN python -m pip install --upgrade pip \
+    && python -m pip install --no-cache-dir -r /app/Requirements.txt
 
-RUN pip3 install -r Requirements.txt
+# Copy app sources
+COPY . /app
 
-COPY . /
+ENV PORT=5000
+EXPOSE 5000
 
-ENTRYPOINT [ "python3" ]
-
-CMD [ "app/app.py" ]
+ENTRYPOINT ["python3"]
+CMD ["app/app.py"]
