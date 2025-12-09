@@ -25,7 +25,7 @@ jobs:
           context: .
           platforms: linux/amd64,linux/arm64
           push: true
-          tags: docker.io/${{ secrets.DOCKERHUB_USERNAME }}/k8s-flask:latest,docker.io/${{ secrets.DOCKERHUB_USERNAME }}/k8s-flask:{{ github.sha }}
+          tags: docker.io/${{ secrets.DOCKERHUB_USERNAME }}/k8s-flask:latest
       - name: Run POST JSON request
         env:
           API_URL: https://api.komodor.com/mgmt/v1/events
