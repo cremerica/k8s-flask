@@ -23,15 +23,16 @@ jobs:
         uses: docker/build-push-action@v5
         with:
           context: .
+          platforms: linux/amd64,linux/arm64
           push: true
-          tags: docker.io/${{ secrets.DOCKERHUB_USERNAME }}/k8s-flask:latest
+          tags: docker.io/${{ secrets.DOCKERHUB_USERNAME }}/k8s-flask:latest,docker.io/${{ secrets.DOCKERHUB_USERNAME }}/k8s-flask:{{ github.sha }}
       - name: Run POST JSON request
         env:
           API_URL: https://api.komodor.com/mgmt/v1/events
           API_TOKEN: ${{ secrets.KOMO_TOKEN }}
         run: |
           echo "POST $API_URL"
-          payload='{"eventType":"deployment","summary":"A Commit happened and workflow was triggered","scope": {"servicesNames":["k8s-flask"],"clusters":["localone"],"namespaces":["appdirect"]},"severity":"information","details": {"Sha":"O87Q"}}'
+          payload='{"eventType":"deployment","summary":"A Commit happened and workflow was triggered","scope": {"servicesNames":["k8s-flask"],"clusters":["localone"],"namespaces":["appdirect"]},"severity":"information","details": {"Sha":"{{ github.sha }}"}}'
           echo $payload
           http_status=$(curl -sS -o response.txt -w "%{http_code}" \
             -H "x-api-key: $API_TOKEN" \
