@@ -4,6 +4,7 @@ metadata:
   name: k8s-flask
   annotations:
     link.argocd.argoproj.io/external-link: https://app.komodor.com/services/cremerica.desktop-appdirect.k8s-flask
+    'backstage.io/kubernetes-id': k8s-flask
 spec:
   replicas: 2
   selector:
@@ -13,6 +14,8 @@ spec:
     metadata:
       labels:
         app: k8s-flask
+      annotations:
+        'backstage.io/kubernetes-id': k8s-flask
     spec:
       containers:
       - name: flask-container
