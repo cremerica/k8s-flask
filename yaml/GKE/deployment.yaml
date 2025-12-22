@@ -16,6 +16,7 @@ spec:
     metadata:
       labels:
         app: k8s-flask
+        backstage.io/kubernetes-id: k8s-flask
       annotations:
         'backstage.io/kubernetes-id': k8s-flask
     spec:
