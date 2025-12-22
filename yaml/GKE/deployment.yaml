@@ -2,6 +2,8 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: k8s-flask
+  labels:
+    backstage.io/kubernetes-id: k8s-flask
   annotations:
     link.argocd.argoproj.io/external-link: https://app.komodor.com/services/cremerica.desktop-appdirect.k8s-flask
     'backstage.io/kubernetes-id': k8s-flask
