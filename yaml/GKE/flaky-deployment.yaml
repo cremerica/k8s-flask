@@ -4,6 +4,8 @@ metadata:
   name: flaky-app
   annotations:
     'backstage.io/kubernetes-id': k8s-flask
+  labels:
+    backstage.io/kubernetes-id: k8s-flask  
 spec:
   replicas: 2
   selector:
