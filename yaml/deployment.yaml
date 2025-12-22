@@ -1,6 +1,8 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
+  labels:
+        app: k8s-flask
   name: k8s-flask
   annotations:
     link.argocd.argoproj.io/external-link: https://app.komodor.com/services/cremerica.desktop-appdirect.k8s-flask
