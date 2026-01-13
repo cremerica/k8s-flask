@@ -7,6 +7,8 @@ metadata:
   annotations:
     link.argocd.argoproj.io/external-link: https://app.komodor.com/services/cremerica.desktop-appdirect.k8s-flask
     'backstage.io/kubernetes-id': k8s-flask
+    app.komodor.com/app: https://github.com/cremerica/k8s-flask
+    app.komodor.com/app.ref: $ARGOCD_APP_REVISION
 spec:
   replicas: 2
   selector:
