@@ -1,0 +1,6 @@
+#storageClassName depends on cluster
+#  - hostpath for docker desktop
+#  - standard for GKE
+
+storageClassName: standard
+commitHash: $ARGOCD_APP_REVISION
