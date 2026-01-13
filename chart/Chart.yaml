@@ -1,0 +1,7 @@
+apiVersion: v2
+
+name: k8s-flask-chart
+description: A Helm chart for k8s-flask
+type: application
+version: 0.1.0
+appVersion: "1.0.0" # The version of the application itself
