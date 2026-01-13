@@ -4,4 +4,3 @@
 
 storageClassName: standard
 commitHash: $ARGOCD_APP_REVISION
-argoRepo: $ARGOCD_APP_SOURCE_REPO_URL
