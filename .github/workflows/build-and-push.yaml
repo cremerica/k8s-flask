@@ -32,7 +32,7 @@ jobs:
           API_TOKEN: ${{ secrets.KOMO_TOKEN }}
         run: |
           echo "POST $API_URL"
-          payload='{"eventType":"deployment","summary":"A Commit happened and workflow was triggered","scope": {"servicesNames":["k8s-flask"],"clusters":["gke.autopilot"],"namespaces":["appdirect"]},"severity":"information","details": {"Sha":"{{ github.sha }}"}}'
+          payload='{"eventType":"deployment","summary":"A Commit happened and workflow was triggered","scope": {"servicesNames":["k8s-flask"],"clusters":["gke.autopilot"],"namespaces":["k8s-flask"]},"severity":"information","details": {"Sha":"{{ github.sha }}"}}'
           echo $payload
           http_status=$(curl -sS -o response.txt -w "%{http_code}" \
             -H "x-api-key: $API_TOKEN" \
