@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
       - name: flask-container
-        image: cremerfc/k8s-flask:latest
+        image: cremerfc/k8s-flaskee:latest
         ports:
         - containerPort: 5000
         env:
