@@ -1,1 +1,1 @@
-Sample Kubernetes Flask app for sandbox
+Sample Kubernetes Flask app for sandbox.
